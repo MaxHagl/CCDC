@@ -40,16 +40,6 @@ command_exists() { command -v "$1" >/dev/null 2>&1; }
 # -----------------------------
 log "Pre-flight checks"
 
-if ! command_exists apt; then
-  echo "Error: apt not found. This script is for Ubuntu/Debian." >&2
-  exit 1
-fi
-
-if [[ "$DB_PASS" == "password" ]]; then
-  echo "Error: DB_PASS is set to the default 'password'. Set DB_PASS to a strong value." >&2
-  echo "Example: DB_PASS='a-strong-password' ./install-opencart-ubuntu24.sh" >&2
-  exit 1
-fi
 
 # -----------------------------
 # 1) System update + packages
